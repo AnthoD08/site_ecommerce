@@ -9,16 +9,24 @@ if (isset($_GET["route"])) {
         switch ($maRoute[0]) {
 
             case "":
-            case "dashboard":
-                include("./php/dashboard.php");
+            case "accueil":
+                include("./php/accueil.php");
                 break;
 
             case "produits":
                 include("./php/produits.php");
                 break;
 
+            case "dashboard":
+                include("./php/dashboard.php");
+                break;
+    
             case "login":
                 include("./php/login.php");
+                break;
+                
+            case "profil":
+                include("./php/profil.php");
                 break;
 
             case "signup":
@@ -31,6 +39,10 @@ if (isset($_GET["route"])) {
 
             case "process_login": // Traiter le formulaire de connexion
                 include("./php/process_login.php");
+                break;
+
+            case "deconnexion":
+                include("./php/deconnexion.php");
                 break;
 
             default:

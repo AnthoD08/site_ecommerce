@@ -31,7 +31,7 @@ if ($user) {
         if ($user['role'] === 'admin') {
             header('Location: dashboard'); // Page pour les admins
         } elseif ($user['role'] === 'user') {
-            header('Location: dashboard'); // Page pour les utilisateurs
+            header('Location: accueil'); // Page pour les utilisateurs
         } else {
             header('Location: unknown_role.php'); // Pour des rôles inconnus (sécurité)
         }

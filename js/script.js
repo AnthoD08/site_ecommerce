@@ -17,13 +17,15 @@ function closeSidebar() {
   }
 }
 
+fetch
+
 // ---------- CHARTS ----------
 
 // BAR CHART
 const barChartOptions = {
   series: [
     {
-      data: [10, 8, 6, 4, 2],
+      data: [10, 8, 6, 4],
     },
   ],
   chart: {
@@ -138,3 +140,5 @@ window.addEventListener("click", function (event) {
     dropdown.classList.remove("open");
   }
 });
+
+

@@ -7,6 +7,33 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+.slider {
+  width: 100%;
+  min-height: 80vh;
+  aspect-ratio: 16/9;
+  position: relative;
+}
+
+.slider-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+.slider-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+h1 {
+  color: white;
+  font-size: 5rem;
+}
+
 .material-icons-outlined {
   vertical-align: middle;
   line-height: 1px;
@@ -224,8 +251,8 @@ body {
 /* Conteneur des produits */
 .produits-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
   padding: 20px;
   justify-items: center;
   max-width: 1200px;
@@ -235,23 +262,24 @@ body {
 /* Carte produit */
 .produit-card {
   width: 100%;
-  max-width: 300px;
-  max-height: 500px;
+  max-width: 320px;
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  background-color: #fff;
+  background-color: #f9f9f9;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-bottom: 20px; /* Espacement entre les cartes */
   box-sizing: border-box;
+  overflow: hidden; /* Empêche les éléments de dépasser */
+  position: relative; /* Pour des effets supplémentaires */
 }
 
 /* Effet de survol sur les cartes */
 .produit-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Image du produit */
@@ -259,36 +287,68 @@ body {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.produit-card:hover .produit-image {
+  transform: scale(1.05); /* Zoom sur l'image au survol */
 }
 
 /* Titre du produit */
 .produit-title {
-  font-size: 1.5em;
-  margin: 10px 0;
-  color: #e44d25;
+  font-size: 1.3em;
+  margin: 15px 0 8px;
+  color: #333;
+  font-weight: 600;
 }
 
 /* Description du produit */
 .produit-description {
-  font-size: 1em;
-  color: #666;
+  font-size: 0.95em;
+  color: #555;
   margin: 0 10px 15px;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 /* Prix du produit */
 .produit-prix {
   font-size: 1.2em;
-  color: #333;
+  color: #e44d25;
   margin: 10px 0;
+  font-weight: bold;
 }
 
 /* Stock du produit */
 .produit-stock {
-  font-size: 1em;
-  color: #555;
+  font-size: 0.9em;
+  color: #888;
   margin: 10px 0;
 }
 
+/* Bouton "Ajouter au panier" */
+.add-to-cart-btn {
+  display: inline-block;
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-3px);
+}
+
+.add-to-cart-btn:active {
+  transform: translateY(1px);
+}
 
 /* Menu déroulant icone connexion */
 .dropdown-menu {
@@ -324,8 +384,6 @@ body {
 .header-right .profile-icon {
   cursor: pointer;
 }
-
-
 
 /* ---------- SCROLLBARS ---------- */
 

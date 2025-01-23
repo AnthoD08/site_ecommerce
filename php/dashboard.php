@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Vérifier si l'utilisateur est connecté et s'il est un admin
+if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
+  header('Location: accueil'); // Rediriger l'utilisateur vers la page de connexion si ce n'est pas un admin
+  exit;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -66,11 +77,7 @@
             <span class="material-icons-outlined">category</span> Categories
           </a>
         </li>
-        <li class="sidebar-list-item">
-          <a href="#">
-            <span class="material-icons-outlined">groups</span> Clients
-          </a>
-        </li>
+
         <li class="sidebar-list-item">
           <a href="#">
             <span class="material-icons-outlined">credit_card</span> Paiements
@@ -82,7 +89,7 @@
           </a>
         </li>
         <li class="sidebar-list-item">
-          <a href="#">
+          <a href="deconnexion">
             <span class="material-icons-outlined">lock</span> Se deconnecter
           </a>
         </li>

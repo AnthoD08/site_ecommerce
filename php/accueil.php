@@ -1,9 +1,16 @@
+<?php
+session_start(); // Démarrer la session
+
+// Vérifier si l'utilisateur est connecté
+$isUserLoggedIn = isset($_SESSION['user_id']);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Admin Dashboard</title>
 
     <!-- Montserrat Font -->
@@ -14,8 +21,6 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
-
-
 </head>
 
 <body>
@@ -31,24 +36,38 @@
             </div>
             <div class="header-right">
 
-
-                <!-- Dropdown pour l'icône de profil -->
                 <div class="dropdown">
-                    <span class="material-icons-outlined profile-icon" onclick="toggleDropdown()">account_circle</span>
-                    <div class="dropdown-menu">
-                        <a href="login">Se connecter</a>
-                        <a href="signup">S'inscrire</a>
-                    </div>
+                    <!-- Si l'utilisateur est connecté, afficher le bouton vers le profil -->
+                    <?php if ($isUserLoggedIn): ?>
+                        <a href="profil" class="profile-link">
+                            <span class="material-icons-outlined profile-icon">account_circle</span>
+                        </a>
+                    <?php else: ?>
+                        <!-- Si l'utilisateur n'est pas connecté, afficher les liens de connexion -->
+                        <span class="material-icons-outlined profile-icon" onclick="toggleDropdown()">account_circle</span>
+                        <div class="dropdown-menu">
+                            <a href="login">Se connecter</a>
+                            <a href="signup">S'inscrire</a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
+
         </header>
         <!-- End Header -->
+
+        <div class="slider">
+            <img src="images/ecommerce.jpg" class="slider-background" alt="" />
+            <div class="slider-content">
+                <h1>Mon site ecommerce</h1>
+            </div>
+        </div>
 
         <!-- Sidebar -->
         <aside id="sidebar">
             <div class="sidebar-title">
                 <div class="sidebar-brand">
-                    <span class="material-icons-outlined">shopping_cart</span> Mon Dashboard
+                    <span class="material-icons-outlined">shopping_cart</span> Mon site
                 </div>
                 <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
             </div>
@@ -69,7 +88,7 @@
                         <span class="material-icons-outlined">category</span> Categories
                     </a>
                 </li>
-                
+
                 <li class="sidebar-list-item">
                     <a href="#">
                         <span class="material-icons-outlined">credit_card</span> Paiements
@@ -87,26 +106,9 @@
                 </li>
             </ul>
         </aside>
-        <!-- End Sidebar -->
 
-        <!-- Main -->
-        <main class="main-container">
-            <h1>Login</h1>
-            <form action="process_login" method="POST">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br>
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required><br>
-
-                <button type="submit">Login</button>
-            </form>
-
-        </main>
-        <!-- End Main -->
-    </div>
-
-    <script src="js/script.js"></script>
+        <script src="js/script.js"></script>
 </body>
 
 </html>
